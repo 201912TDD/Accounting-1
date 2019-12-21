@@ -79,20 +79,20 @@ TEST_F(AccoutingTestCase, Find_Partial_Month)
 	ASSERT_EQ(budget, 15);
 }
 
-// TEST_F(AccoutingTestCase, Find_Partial_CrossingMonth)
-//{
-//	auto mockRepo = new MockBudgetRepo();
-//
-//	auto testData = std::vector<Budget>();
-//	testData.push_back(MyMethod("201901", 31));
-//	testData.push_back(MyMethod("201902", 280));
-//	testData.push_back(MyMethod("201903", 3100));
-//
-//	mockRepo->setBudget(testData);
-//
-//	Accounting accounting(mockRepo);
-//
-//	auto budget = accounting.queryBudget(QDate(2019, 01, 31), QDate(2019, 03, 01));
-//
-//	ASSERT_EQ(budget, 381);
-//}
+TEST_F(AccoutingTestCase, Find_Partial_CrossingMonth)
+{
+	auto mockRepo = new MockBudgetRepo();
+
+	auto testData = std::vector<Budget>();
+	testData.push_back(MyMethod("201901", 31));
+	testData.push_back(MyMethod("201902", 280));
+	testData.push_back(MyMethod("201903", 3100));
+
+	mockRepo->setBudget(testData);
+
+	Accounting accounting(mockRepo);
+
+	auto budget = accounting.queryBudget(QDate(2019, 01, 31), QDate(2019, 03, 01));
+
+	ASSERT_EQ(budget, 381);
+}
